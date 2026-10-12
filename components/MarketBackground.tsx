@@ -34,6 +34,12 @@ function buildPaths() {
 export default function MarketBackground() {
   const { pts, line, bench, area } = useMemo(buildPaths, []);
   const [prog, setProg] = useState(0);
+  const [cur, setCur] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setCur((i) => (i + 1) % NEWS.length), 4200);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     let raf = 0;
@@ -59,6 +65,7 @@ export default function MarketBackground() {
   const p = Math.max(0.12, prog);
   const dot = pts[Math.min(pts.length - 1, Math.round(p * (pts.length - 1)))];
   const price = 100 + (820 - dot[1]) * 0.21;
+  const n = NEWS[cur];
 
   return (
     <>
@@ -88,27 +95,24 @@ export default function MarketBackground() {
           <circle className="dot" cx={dot[0]} cy={dot[1]} r="5" fill="var(--acc)" />
         </svg>
 
-        {NEWS.map((n) => (
-          <div
-            key={n.tag}
-            className={`news${n.hideSm ? ' hide-sm-news' : ''}`}
-            style={{ top: n.top, left: n.left, animationDelay: n.delay }}
-          >
-            <div className="news-top mono">
-              <span className="acc">
-                <span className="flash">●</span> {n.tag}
-              </span>
-              <span style={{ color: '#8A8A82' }}>{n.time}</span>
-            </div>
-            <div className="news-text">{n.text}</div>
-          </div>
-        ))}
       </div>
 
-      <div className="chip-price mono" aria-hidden="true">
-        <span style={{ fontSize: 13, color: 'var(--ink3)' }}>$OD</span>
-        <span style={{ fontSize: 16 }}>{price.toFixed(2)}</span>
-        <span className="acc" style={{ fontSize: 13 }}>▲ +{(price - 100).toFixed(2)}%</span>
+      <div className="newsbar mono" aria-hidden="true">
+        <div className="nb-live">
+          <span className="flash">●</span> LIVE
+        </div>
+        <div className="nb-feed">
+          <div className="nb-item" key={cur}>
+            <span className="acc nb-tag">{n.tag}</span>
+            <span className="nb-time">{n.time}</span>
+            <span className="nb-text">{n.text}</span>
+          </div>
+        </div>
+        <div className="nb-price">
+          <span className="nb-sym">$OD</span>
+          <span style={{ fontSize: 15 }}>{price.toFixed(2)}</span>
+          <span className="acc" style={{ fontSize: 13 }}>▲ +{(price - 100).toFixed(2)}%</span>
+        </div>
       </div>
     </>
   );
