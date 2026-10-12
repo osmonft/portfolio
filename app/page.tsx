@@ -19,11 +19,12 @@ const PILLARS = [
   { k: 'AI', v: 'Automation that replaces manual workflows with tools people use daily.' },
 ];
 
-const METRICS = [
-  { k: 'LIVE PRODUCTS', v: String(PROJECTS.filter((p) => p.status === 'LIVE').length) },
-  { k: 'GRADUATING', v: 'Dec 2026' },
-  { k: 'BASED IN', v: 'NYC' },
-];
+const METRICS = {
+  live: String(PROJECTS.filter((p) => p.status === 'LIVE').length),
+  base: 'NYC',
+};
+
+const DOMAINS = ['PREDICTION MARKETS', 'CRYPTO', 'MARKET MAKING', 'AUTOMATION', 'AI'];
 
 export default function Home() {
   const ticker = [...TICKER, ...TICKER, ...TICKER, ...TICKER];
@@ -156,12 +157,22 @@ export default function Home() {
         <div className="drift-wrap">
           <div className="drift serif" aria-hidden="true">finance × ai</div>
           <div className="wrap metrics">
-            {METRICS.map((m) => (
-              <div className="metric rv" key={m.k}>
-                <span className="metric-v">{m.v}</span>
-                <span className="mono metric-k">{m.k}</span>
+            <div className="metric rv">
+              <span className="metric-v">{METRICS.live}</span>
+              <span className="mono metric-k">LIVE PRODUCTS</span>
+            </div>
+            <div className="metric rv">
+              <div className="domain-tags">
+                {DOMAINS.map((d) => (
+                  <span className="chip2 mono" key={d}>{d}</span>
+                ))}
               </div>
-            ))}
+              <span className="mono metric-k">BUILT ON</span>
+            </div>
+            <div className="metric rv">
+              <span className="metric-v">{METRICS.base}</span>
+              <span className="mono metric-k">BASED IN</span>
+            </div>
           </div>
         </div>
 

@@ -142,11 +142,12 @@ a.row:hover .chip{border-color:#0B0C0B;color:#0B0C0B}
 
 /* drift + contact + footer */
 .drift-wrap{overflow:hidden;padding-top:40px}
-.drift{white-space:nowrap;font-size:clamp(120px,18vw,300px);line-height:1;font-style:italic;color:transparent;-webkit-text-stroke:1px #3A3C38}
+.drift{text-align:center;white-space:nowrap;font-size:clamp(120px,18vw,300px);line-height:1;font-style:italic;color:transparent;-webkit-text-stroke:1px #3A3C38}
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px;padding:48px 0 0;margin-top:16px;border-top:1px solid var(--line)}
 .metric{display:flex;flex-direction:column;gap:10px}
 .metric-v{font-size:clamp(40px,5vw,64px);font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--acc)}
 .metric-k{font-size:12px;color:var(--mute);letter-spacing:.08em}
+.domain-tags{display:flex;flex-wrap:wrap;gap:8px}
 .sec-contact{padding-top:120px;padding-bottom:80px}
 .h-contact{margin:0;font-size:clamp(52px,8.5vw,140px);font-weight:400;letter-spacing:-.04em;line-height:.92}
 .footer{padding-top:32px;padding-bottom:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;color:#8A8A82}
