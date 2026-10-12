@@ -1,78 +1,152 @@
+export const SITE = {
+  name: 'Osmon Djumagulov',
+  url: 'https://portfolio-nine-sandy-dx3muidb34.vercel.app',
+  tagline: 'Finance, data and AI',
+  location: 'New York',
+  description: 'Osmon Djumagulov. Finance, data and AI. Baruch College, New York.',
+};
+
 export const CONTACT = {
   email: 'osmonbek.djumagulov@gmail.com',
   linkedin: 'https://www.linkedin.com/in/osmon-d',
   github: 'https://github.com/osmonft',
+  resume: '/Osmonbek_Djumagulov_Resume.pdf',
+};
+
+export type Shot = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  size: 'full' | 'half' | 'portrait';
 };
 
 export type Project = {
-  num: string;
+  slug: string;
   name: string;
-  status: 'LIVE' | 'COMING SOON';
-  desc: string;
+  kind: string;
+  summary: string;
+  did: string;
+  facts: [string, string][];
   tags: string[];
-  href?: string;
+  href: string;
+  linkLabel: string;
+  shots: Shot[];
 };
 
 export const PROJECTS: Project[] = [
   {
-    num: '01',
+    slug: 'edge-terminal',
     name: 'Edge Terminal',
-    status: 'LIVE',
-    desc: 'Prediction market intelligence for Kalshi and Polymarket traders. AI probability estimates, Kelly and risk of ruin calculators, a trade journal and an AI review of your edge.',
+    kind: 'Prediction-market analytics',
+    summary:
+      'An analytics platform for Kalshi and Polymarket traders. It scores the gap between market-implied probabilities and independent model estimates, pulling live prices and volume from both exchanges across politics, macro and sports. Kelly sizing, risk of ruin and a trade journal sit around it.',
+    did:
+      'Founded and built it. Validated the model live with a small allocation of personal capital across three flagged mispricings, returning 156% over two months, measured by a performance layer tracking win rate, realized P&L and edge captured against fair odds.',
+    facts: [
+      ['Year', '2026'],
+      ['Role', 'Founder'],
+      ['Markets', 'Kalshi, Polymarket'],
+      ['Result', '+156% on a live test allocation over two months'],
+      ['Status', 'Live'],
+    ],
     tags: ['AI', 'Prediction Markets', 'SaaS', 'Risk'],
     href: 'https://edgeterminal.net',
+    linkLabel: 'edgeterminal.net',
+    shots: [
+      { src: '/work/edge-terminal-1.jpg', alt: 'Edge Terminal home', width: 1600, height: 1000, size: 'full' },
+      { src: '/work/edge-terminal-2.jpg', alt: 'A market analysis in Edge Terminal', width: 1600, height: 1000, size: 'half' },
+      { src: '/work/edge-terminal-m.jpg', alt: 'Edge Terminal on a phone', width: 800, height: 1436, size: 'portrait' },
+      { src: '/work/edge-terminal-3.jpg', alt: 'Edge Terminal tools', width: 1600, height: 1000, size: 'full' },
+    ],
   },
   {
-    num: '02',
+    slug: 'theo',
     name: 'THEO',
-    status: 'LIVE',
-    desc: 'The Market Making Game. A free multiplayer trivia game for 2 to 8 players: guess numbers, make markets and put your confidence on the line.',
+    kind: 'The market-making game',
+    summary:
+      'Free multiplayer trivia built on how a market maker thinks. Every player bids a range; the tightest range wins the market, sets the line, and everyone else picks a side. Confidence, not just knowledge, decides the round.',
+    did:
+      'Designed and built the game: guess numbers, make markets and put your confidence on the line, for 2 to 8 players with no sign-up.',
+    facts: [
+      ['Players', '2 to 8, no sign-up'],
+      ['Rounds', '3, 5 or 7'],
+      ['Status', 'Live'],
+    ],
     tags: ['Multiplayer', 'Game', 'Market Making', 'Trading'],
     href: 'https://theo-market-game.osmonft.workers.dev/',
+    linkLabel: 'Play THEO',
+    shots: [
+      { src: '/work/theo-1.jpg', alt: 'THEO home', width: 1600, height: 1000, size: 'full' },
+      { src: '/work/theo-m.jpg', alt: 'THEO on a phone', width: 800, height: 1436, size: 'portrait' },
+      { src: '/work/theo-2.jpg', alt: 'How a round of THEO works', width: 1600, height: 578, size: 'half' },
+    ],
   },
   {
-    num: '03',
+    slug: 'chainsight',
     name: 'ChainSight',
-    status: 'LIVE',
-    desc: 'A verified Chrome extension rated 4.5 stars. Detects Solana and Ethereum token addresses on Twitter and pulls live liquidity, volume, market cap and contract age for instant due diligence. Built at the Colosseum Solana Hackathon.',
+    kind: 'Chrome extension',
+    summary:
+      'A verified Chrome extension that spots Solana and Ethereum token addresses on X and pulls live liquidity, volume, market cap and contract age from decentralized exchanges, so due diligence happens in the feed instead of five tabs later.',
+    did:
+      'Co-founded it at the Colosseum Solana Hackathon. It shipped to the Chrome Web Store as a verified extension rated 4.5 stars.',
+    facts: [
+      ['Year', '2025'],
+      ['Role', 'Co-founder'],
+      ['Built at', 'Colosseum Solana Hackathon'],
+      ['Status', 'Live, verified'],
+    ],
     tags: ['Chrome Extension', 'JavaScript', 'Crypto', 'Analytics'],
     href: 'https://chromewebstore.google.com/detail/tweet-ca-helper-chainsigh/eadccpcdekfcoalobnmkgmblfomlimim',
+    linkLabel: 'Chrome Web Store',
+    shots: [
+      { src: '/work/chainsight-2.jpg', alt: 'ChainSight on an X search', width: 1280, height: 800, size: 'full' },
+      { src: '/work/chainsight-3.jpg', alt: 'ChainSight token history', width: 1280, height: 800, size: 'half' },
+      { src: '/work/chainsight-5.jpg', alt: 'ChainSight address scraper', width: 1280, height: 800, size: 'half' },
+      { src: '/work/chainsight-1.jpg', alt: 'ChainSight content filter', width: 1280, height: 800, size: 'full' },
+    ],
   },
   {
-    num: '04',
+    slug: 'coach-caton',
     name: 'Coach Caton',
-    status: 'LIVE',
-    desc: 'An AI chatbot for a sports coaching business that cut the owner’s email volume from 70 to 15 a month and captured 100+ leads into a central database.',
+    kind: 'AI assistant',
+    summary:
+      'An AI assistant for a hurdles coaching business. It answers clients and prospects from a knowledge base drawn from four social platforms, so the owner coaches instead of answering email.',
+    did:
+      'Built it as a developer at ODP AI Solutions. Engineered the knowledge base across four social platforms, cut the owner’s email volume from 70 to 15 a month and captured 100+ leads into a central database.',
+    facts: [
+      ['Role', 'Developer, ODP AI Solutions'],
+      ['Result', 'Owner email down from 70 to 15 a month'],
+      ['Leads', '100+ captured to one database'],
+      ['Status', 'Live'],
+    ],
     tags: ['AI', 'Web App', 'Coaching', 'Automation'],
     href: 'https://hurdlepro.lovable.app/ask-coach',
-  },
-  {
-    num: '05',
-    name: 'ConnectED',
-    status: 'COMING SOON',
-    desc: 'A Chrome extension that drafts personalized LinkedIn connection requests, using AI to write a tailored note from a prospect’s profile.',
-    tags: ['Chrome Extension', 'JavaScript', 'AI', 'LinkedIn'],
+    linkLabel: 'Ask Coach',
+    shots: [
+      { src: '/work/coach-caton-1.jpg', alt: 'Coach Caton', width: 1600, height: 1000, size: 'full' },
+      { src: '/work/coach-caton-m.jpg', alt: 'HurdlePro on a phone', width: 800, height: 1436, size: 'portrait' },
+      { src: '/work/coach-caton-2.jpg', alt: 'HurdlePro home', width: 1600, height: 1000, size: 'half' },
+    ],
   },
 ];
 
-export const TICKER = [
-  ['PREDICTION MARKETS', '▲'],
-  ['MARKET MAKING', '▼'],
-  ['AI SYSTEMS', '▲'],
-  ['CHROME EXTENSIONS', '▲'],
-  ['ON-CHAIN ANALYTICS', '▼'],
-  ['AUTOMATION', '▲'],
-  ['QUANT RESEARCH', '▲'],
-] as const;
+export const IN_DEVELOPMENT = {
+  name: 'ConnectED',
+  kind: 'Chrome extension',
+  desc: 'A Chrome extension that drafts personalized LinkedIn connection requests, using AI to write a tailored note from a prospect’s profile.',
+  tags: ['Chrome Extension', 'JavaScript', 'AI', 'LinkedIn'],
+};
 
-export const NEWS = [
-  { tag: 'MARKETS', time: '09:30', text: 'Opening bell: stocks push higher out of the gate', top: '14%', left: '62%', delay: '0s', hideSm: false },
-  { tag: 'SHIPPED', time: '10:12', text: 'ChainSight goes live on the Chrome Web Store', top: '58%', left: '3%', delay: '2.3s', hideSm: false },
-  { tag: 'EDGE', time: '11:04', text: 'Edge Terminal flags mispriced Kalshi markets', top: '38%', left: '74%', delay: '4.6s', hideSm: true },
-  { tag: 'LAUNCH', time: '12:40', text: 'Coach Caton launches AI ask-a-coach portal', top: '76%', left: '58%', delay: '7s', hideSm: false },
-  { tag: 'THEO', time: '13:55', text: 'THEO opens rooms: make a market, back your guess', top: '24%', left: '4%', delay: '9.3s', hideSm: true },
-  { tag: 'IN BUILD', time: '15:20', text: 'ConnectED enters build: AI outreach in progress', top: '66%', left: '70%', delay: '11.6s', hideSm: true },
-];
+export const EDUCATION = {
+  school: 'Baruch College, Zicklin School of Business',
+  degree: 'BBA in Finance, Minor in Communications',
+  dates: 'Dec 2026',
+  place: 'New York, NY',
+  honors: ['GPA 3.7 / 4.00', 'Zicklin Honors Program', 'Dean’s List, all terms'],
+  coursework:
+    'Corporate Finance, Financial Reporting Analysis, Advanced Investment Analysis, Statistical Analysis in Economics and Finance, Honors Case Studies in Business',
+};
 
 export type Entry = { org: string; role: string; dates: string; place?: string; bullets: string[] };
 
@@ -139,8 +213,10 @@ export const CERTS = [
 ];
 
 export const SKILLS = [
-  { label: 'TECHNICAL', items: ['Financial Modeling', 'Valuation', 'Comparable Company Analysis', 'Cash Flow Modeling', 'Capital Structure Analysis'] },
-  { label: 'PLATFORMS', items: ['Bloomberg Terminal', 'Capital IQ', 'Excel (Pivot Tables)', 'PowerPoint'] },
-  { label: 'DATA & ANALYTICS', items: ['Python', 'SQL', 'Tableau', 'Regression Analysis', 'Statistical Modeling'] },
+  { label: 'Technical', items: ['Financial Modeling', 'Valuation', 'Comparable Company Analysis', 'Cash Flow Modeling', 'Capital Structure Analysis'] },
+  { label: 'Platforms', items: ['Bloomberg Terminal', 'Capital IQ', 'Excel (Pivot Tables)', 'PowerPoint'] },
+  { label: 'Data', items: ['Python', 'SQL', 'Tableau', 'Regression Analysis', 'Statistical Modeling'] },
   { label: 'AI', items: ['Claude Code', 'Codex', 'API Integration'] },
+  { label: 'Languages', items: ['Kyrgyz (native)', 'Russian (fluent)'] },
+  { label: 'Interests', items: ['Chess', 'European football', 'Crypto markets', 'Film', 'Video editing'] },
 ];
