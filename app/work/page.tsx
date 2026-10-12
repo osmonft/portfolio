@@ -1,42 +1,48 @@
-import Link from 'next/link';
-import type { Metadata } from 'next';
-import Plate from '@/components/Plate';
-import SiteFooter from '@/components/SiteFooter';
-import SiteHeader from '@/components/SiteHeader';
-import { IN_DEVELOPMENT, PROJECTS } from '@/lib/data';
-import { pageMeta } from '@/lib/meta';
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { inDevelopment, projects } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = pageMeta({
-  title: 'Work',
-  description: 'Projects by Osmon Djumagulov: Edge Terminal, THEO, ChainSight and Coach Caton.',
-  path: '/work',
-});
+export const metadata: Metadata = pageMeta("Work", "Projects by Osmon Djumagulov: Edge Terminal, THEO, ChainSight and Coach Caton.", "/work");
 
+// The work: one plate per project in a staggered pair of columns, each with
+// its name and kind in small capitals. Everything else is on the project page.
 export default function Work() {
   return (
     <div className="page">
-      <SiteHeader current="/work" />
-      <main className="fade">
-        <div className="page-title">
-          <h1 className="title">Work</h1>
-        </div>
+      <Header />
+      <main>
+        <div className="page-title mask" data-intro="1"><h1 className="title">Work</h1></div>
+
         <div className="work-index grid">
-          {PROJECTS.map((p, i) => (
-            <Link key={p.slug} className="work-card hover-parent" href={`/work/${p.slug}`}>
-              <Plate shot={p.shots[0]} sizes="(min-width: 900px) 46vw, 92vw" priority={i < 2} />
-              <div className="card-label label">
-                <span className="link">{p.name}</span>
-                <span className="kind">{p.kind}</span>
-              </div>
-            </Link>
-          ))}
+          {projects.map((p, i) => {
+            const cover = p.plates[0];
+            const enter = i < 2 ? { "data-intro": 2 + i * 0.5 } : { "data-rise": "" };
+            return (
+              <Link key={p.slug} href={`/work/${p.slug}`} className="work-card hover-parent" data-page>
+                <div className="plate" data-plate {...enter}>
+                  <div className="frame">
+                    <Image src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} sizes="(min-width: 900px) 46vw, 92vw" priority={i < 2} />
+                  </div>
+                </div>
+                <div className="card-label label" {...enter}>
+                  <span className="mask"><span className="link">{p.title}</span></span>
+                  <span className="mask"><span className="kind">{p.kind}</span></span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
-        <div className="also label">
-          <span>{IN_DEVELOPMENT.name}</span>
-          <span className="muted">{IN_DEVELOPMENT.kind} · In development</span>
+
+        <div className="also label" data-rise>
+          <span className="mask"><span>{inDevelopment.title}</span></span>
+          <span className="mask"><span className="muted">{inDevelopment.kind}</span></span>
         </div>
       </main>
-      <SiteFooter />
+      <Footer />
     </div>
   );
 }

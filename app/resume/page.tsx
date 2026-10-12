@@ -1,90 +1,51 @@
-import type { Metadata } from 'next';
-import SiteFooter from '@/components/SiteFooter';
-import SiteHeader from '@/components/SiteHeader';
-import { CERTS, CONTACT, EDUCATION, EXPERIENCE, RESUME_PROJECTS, SKILLS, type Entry } from '@/lib/data';
-import { pageMeta } from '@/lib/meta';
+import type { Metadata } from "next";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { profile, resume } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = pageMeta({
-  title: 'Résumé',
-  description: 'Résumé of Osmon Djumagulov: Finance BBA at Baruch College, founder of Edge Terminal, New York.',
-  path: '/resume',
-});
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <section className="cv-section grid">
-      <h2 className="sec label">{title}</h2>
-      <div className="entries">{children}</div>
-    </section>
-  );
-}
-
-function Entries({ items }: { items: Entry[] }) {
-  return items.map((e) => (
-    <article className="cv-entry" key={e.org}>
-      <p className="when label muted">{e.dates}</p>
-      <div className="what">
-        <h3 className="name">{e.org}</h3>
-        <p className="role">{e.role}</p>
-        <ul className="body">
-          {e.bullets.map((b) => <li key={b.slice(0, 32)}>{b}</li>)}
-        </ul>
-      </div>
-    </article>
-  ));
-}
+export const metadata: Metadata = pageMeta("Résumé", "Résumé of Osmon Djumagulov: Finance BBA at Baruch College, founder of Edge Terminal, New York.", "/resume");
 
 export default function Resume() {
   return (
     <div className="page">
-      <SiteHeader current="/resume" />
-      <main className="fade">
+      <Header />
+      <main>
         <div className="cv-head">
-          <h1 className="title">Résumé</h1>
-          <p className="actions">
-            <a className="button label" href={CONTACT.resume} download>Download PDF</a>
+          <div className="mask" data-intro="1"><h1 className="title">Résumé</h1></div>
+          <p className="actions mask" data-intro="1.6">
+            <a className="label link" href={profile.resumePdf} target="_blank" rel="noopener">Download PDF</a>
           </p>
         </div>
 
-        <Section title="Education">
-          <article className="cv-entry">
-            <p className="when label muted">{EDUCATION.dates}</p>
-            <div className="what">
-              <h3 className="name">{EDUCATION.school}</h3>
-              <p className="role">{EDUCATION.degree}</p>
-              <p className="body note">{EDUCATION.honors.join(' · ')}</p>
-              <p className="body note">Coursework: {EDUCATION.coursework}</p>
-            </div>
-          </article>
-        </Section>
-
-        <Section title="Experience"><Entries items={EXPERIENCE} /></Section>
-        <Section title="Projects"><Entries items={RESUME_PROJECTS} /></Section>
-
-        <Section title="Certifications">
-          {CERTS.map((c) => (
-            <article className="cv-entry" key={c.name}>
-              <p className="when label muted">{c.date}</p>
-              <div className="what">
-                <h3 className="name">{c.name}</h3>
-                <p className="role">{c.by}</p>
+        {resume.map((s, si) => {
+          // The first section is above the fold: it plays with the arrival sequence.
+          const enter = si === 0 ? { "data-intro": 2 } : { "data-rise": "" };
+          return (
+            <section key={s.section} className="cv-section grid" {...enter}>
+              <p className="sec label">{s.section}</p>
+              <div className="entries">
+                {s.entries.map((e) => (
+                  <article key={e.title} className="cv-entry">
+                    <p className="when label muted">{e.when}</p>
+                    <div className="what">
+                      <h2 className="name">{e.title}</h2>
+                      {e.role && <p className="role">{e.role}</p>}
+                      {e.notes?.map((n) => <p key={n} className="body note">{n}</p>)}
+                      {e.bullets && (
+                        <ul className="body">
+                          {e.bullets.map((b) => <li key={b}>{b}</li>)}
+                        </ul>
+                      )}
+                    </div>
+                  </article>
+                ))}
               </div>
-            </article>
-          ))}
-        </Section>
-
-        <Section title="Skills">
-          {SKILLS.map((s) => (
-            <article className="cv-entry" key={s.label}>
-              <p className="when label muted">{s.label}</p>
-              <div className="what">
-                <p className="name">{s.items.join(', ')}</p>
-              </div>
-            </article>
-          ))}
-        </Section>
+            </section>
+          );
+        })}
       </main>
-      <SiteFooter />
+      <Footer />
     </div>
   );
 }

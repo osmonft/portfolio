@@ -1,7 +1,7 @@
-import type { MetadataRoute } from 'next';
-import { PROJECTS, SITE } from '@/lib/data';
+import type { MetadataRoute } from "next";
+import { projects } from "@/content/site";
+import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['', '/work', '/resume', '/contact', ...PROJECTS.map((p) => `/work/${p.slug}`)];
-  return paths.map((p) => ({ url: `${SITE.url}${p}` }));
+  return ["", "/work", "/resume", "/contact", ...projects.map((p) => `/work/${p.slug}`)].map((p) => ({ url: `${SITE_URL}${p}` }));
 }

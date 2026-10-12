@@ -1,97 +1,74 @@
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
-import Plate from '@/components/Plate';
-import SiteFooter from '@/components/SiteFooter';
-import SiteHeader from '@/components/SiteHeader';
-import { PROJECTS } from '@/lib/data';
-import { pageMeta } from '@/lib/meta';
-
-type Props = { params: Promise<{ slug: string }> };
-
-export const dynamicParams = false;
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Plates } from "@/components/Plates";
+import { projects } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return PROJECTS.map((p) => ({ slug: p.slug }));
+  return projects.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const p = PROJECTS.find((x) => x.slug === slug);
+  const p = projects.find((x) => x.slug === slug);
   if (!p) return {};
-  const shot = p.shots[0];
-  return pageMeta({
-    title: p.name,
-    description: `${p.name}, ${p.kind.toLowerCase()}. ${p.summary.split('. ')[0]}.`,
-    path: `/work/${p.slug}`,
-    image: { url: shot.src, width: shot.width, height: shot.height, alt: shot.alt },
-  });
+  const cover = p.plates[0];
+  return pageMeta(p.title, p.summary, `/work/${p.slug}`, { url: cover.src, width: cover.width, height: cover.height, alt: cover.alt });
 }
 
-export default async function ProjectPage({ params }: Props) {
+// A project: its particulars held in a quiet column on the left while the
+// pictures run down the right — a wall label beside the work.
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const i = PROJECTS.findIndex((x) => x.slug === slug);
+  const i = projects.findIndex((x) => x.slug === slug);
   if (i < 0) notFound();
-  const p = PROJECTS[i];
-  const next = PROJECTS[(i + 1) % PROJECTS.length];
+  const p = projects[i];
+  const next = projects[(i + 1) % projects.length];
+  const facts = p.year ? [{ label: "Year", value: p.year }, ...p.facts] : p.facts;
 
   return (
     <div className="page">
-      <SiteHeader current="/work" />
-      <main className="fade">
+      <Header />
+      <main>
         <article className="project grid">
           <aside className="project-label">
             <div>
-              <p><Link className="label muted link" href="/work">Work</Link></p>
-              <h1 className="title">{p.name}</h1>
-              <p className="label muted kind">{p.kind}</p>
+              <p className="mask" data-intro="1">
+                <Link href="/work" className="label muted link" data-page>Work</Link>
+              </p>
+              <div className="mask" data-intro="1.4"><h1 className="title">{p.title}</h1></div>
+              <div className="mask" data-intro="1.8"><p className="label muted kind">{p.kind}</p></div>
+              <p className="body summary" data-intro="2.4" data-split>{p.summary}</p>
 
-              <section className="section">
-                <h2 className="label muted">What it is</h2>
-                <p className="body">{p.summary}</p>
-              </section>
-              <section className="section">
-                <h2 className="label muted">What I did</h2>
-                <p className="body">{p.did}</p>
-              </section>
-
-              <dl className="facts">
-                {p.facts.map(([k, v]) => (
-                  <div key={k}>
-                    <dt className="label muted">{k}</dt>
-                    <dd>{v}</dd>
+              <dl className="facts" data-intro="3.2">
+                {facts.map((f) => (
+                  <div key={f.label}>
+                    <dt className="label muted">{f.label}</dt>
+                    <dd>{f.value}</dd>
                   </div>
                 ))}
-                <div>
-                  <dt className="label muted">Built on</dt>
-                  <dd><ul className="tags">{p.tags.map((t) => <li key={t}>{t}</li>)}</ul></dd>
-                </div>
               </dl>
 
-              <p className="visit">
-                <a className="label link" href={p.href} target="_blank" rel="noopener">{p.linkLabel} ↗</a>
+              <p className="visit mask" data-intro="4">
+                <a href={p.href} target="_blank" rel="noopener" className="label link">{p.linkLabel} ↗</a>
               </p>
             </div>
           </aside>
+
           <div className="project-plates">
-            <div className="plates">
-              {p.shots.map((s, n) => (
-                <Plate
-                  key={s.src}
-                  shot={s}
-                  sizes={s.size === 'full' ? '(min-width: 1000px) 62vw, 92vw' : '(min-width: 1000px) 31vw, 92vw'}
-                  priority={n === 0}
-                />
-              ))}
-            </div>
+            <Plates plates={p.plates} />
           </div>
         </article>
-        <Link className="next label hover-parent" href={`/work/${next.slug}`}>
-          <span className="muted">Next</span>
-          <span className="link">{next.name}</span>
+
+        <Link href={`/work/${next.slug}`} className="next label hover-parent" data-page data-rise>
+          <span className="mask"><span className="muted">Next</span></span>
+          <span className="mask"><span className="link">{next.title}</span></span>
         </Link>
       </main>
-      <SiteFooter />
+      <Footer />
     </div>
   );
 }
