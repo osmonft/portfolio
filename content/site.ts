@@ -118,7 +118,7 @@ export const projects: Project[] = [
     summary:
       "An AI assistant for a hurdles coaching business. It answers clients and prospects from a knowledge base drawn from four social platforms, so the owner coaches instead of answering email.",
     facts: [
-      { label: "Role", value: "Developer, ODP AI Solutions" },
+      { label: "Role", value: "Founder, ODP AI Solutions" },
       { label: "Result", value: "Owner email down from 70 to 15 a month" },
       { label: "Leads", value: "100+ captured to one database" },
       { label: "Status", value: "Live" },
@@ -144,10 +144,10 @@ export const resume: { section: string; entries: Entry[] }[] = [
       {
         when: "Dec 2026",
         title: "Baruch College, Zicklin School of Business",
-        role: "BBA in Finance, Minor in Communications",
+        role: "BBA in Finance, Minors in Business Analysis and Communications",
         notes: [
           "GPA 3.7 / 4.00 · Zicklin Honors Program · Dean’s List, all terms",
-          "Corporate Finance, Financial Reporting Analysis, Advanced Investment Analysis, Statistical Analysis in Economics and Finance, Honors Case Studies in Business",
+          "Advanced Investment Analysis, Equity Markets Trading & Strategy, Technical Analysis, Corporate Finance, Real Estate Finance & Investment, Financial Reporting Analysis, Statistical Analysis in Economics & Finance, Foundations of Predictive Analytics, Honors Strategic Management",
         ],
       },
     ],
@@ -156,12 +156,13 @@ export const resume: { section: string; entries: Entry[] }[] = [
     section: "Experience",
     entries: [
       {
-        when: "Mar – Aug 2026",
+        when: "Mar – Jul 2026",
         title: "Edge Terminal",
         role: "Founder · Prediction-market analytics platform",
         bullets: [
-          "Built and launched an analytics platform for Kalshi and Polymarket traders that scores mispricing between market-implied probabilities and independent model estimates, pulling live pricing and volume from both exchange APIs across politics, macro and sports.",
-          "Validated the model live with a small allocation of personal capital across three flagged mispricings, returning 156% over two months, measured by a performance layer tracking win rate, realised P&L and edge captured against fair odds.",
+          "Built a prediction-market analytics platform with Claude Code that reprices Kalshi and Polymarket contracts against live news across politics, macro, crypto and sports.",
+          "Applied Kelly Criterion position sizing and risk-of-ruin modelling to capital allocation, with a performance layer tracking win rate, realised P&L and edge captured against fair odds.",
+          "Validated the model live with a small allocation of personal capital across three flagged mispricings, returning 156% over two months.",
         ],
       },
       {
@@ -170,18 +171,20 @@ export const resume: { section: string; entries: Entry[] }[] = [
         role: "Investment Analyst · Private equity and venture capital",
         bullets: [
           "Performed independent due diligence on a private nuclear-generation company, analysing projected cash flows, cost structure and contract-backed revenue visibility, informing a decision to defer a $10M investment until technology and contract milestones de-risked the entry.",
-          "Sized a ~$18B annual DoD diesel spend addressable by microreactor generation, mapping the US power regulatory environment, Project Pele, the customer pipeline and offtake contract structures to set the revenue ceiling.",
-          "Wrote investment memos on the target and its closest competitor, benchmarking cost efficiency, capital intensity and technology readiness to stress-test the recommendation.",
-          "Mapped approval milestones to first generation in a single regulatory timeline, giving senior leadership one page to judge how far the company stood from revenue.",
+          "Built profitability models across 200+ potential deployment sites, testing site-level economics to identify where projects cleared on cost.",
+          "Sized a ~$18B annual DoD diesel spend addressable by microreactors, mapping the US regulatory environment, Project Pele, the customer pipeline and contract structures to set the revenue ceiling.",
+          "Wrote investment memos on the target and its closest competitor, benchmarking cost efficiency and technology readiness, and presented findings to senior leadership to stress-test the recommendation.",
+          "Mapped approval milestones to microreactor production in a single regulatory timeline, giving senior leadership a fast view of time-to-market and execution risk.",
         ],
       },
       {
         when: "Jun 2024 – Now",
         title: "ODP AI Solutions",
-        role: "Developer",
+        role: "Founder",
         bullets: [
           "Launched an AI chatbot for a sports-coaching business, cutting the owner’s email volume from 70 to 15 a month and capturing 100+ leads into a central database.",
-          "Engineered a knowledge base drawn from four social platforms so the chatbot answers client and prospect questions with no staff involvement.",
+          "Engineered a knowledge base drawn from the business’s social platforms so the chatbot answers client and prospect questions with no staff involvement.",
+          "Built a Chrome extension for LinkedIn networking that surfaces commonalities between users and drafts tailored outreach with the Anthropic API.",
         ],
       },
     ],
@@ -192,12 +195,11 @@ export const resume: { section: string; entries: Entry[] }[] = [
       {
         when: "Oct 2026",
         title: "THEO",
-        role: "Creator · Multiplayer market-making game",
+        role: "Creator · Multiplayer market-making simulation",
         bullets: [
-          "Led AI-assisted development and Cloudflare deployment of a multiplayer trivia game simulating market-maker and market-taker behaviour.",
-          "Integrated real-time room-based gameplay using React, TypeScript, WebSockets and Cloudflare Durable Objects, supporting up to eight players.",
-          "Refined onboarding, room chat and game pacing through player feedback to improve clarity and usability.",
-          "Established automated validation with 41 unit tests and multiplayer integration tests covering scoring, reconnects, permissions and timer transitions.",
+          "Created and deployed a multiplayer game modelling market makers’ bid-ask quotes and market takers’ decisions around a hidden fair value.",
+          "Designed zero-sum scoring to illustrate spread capture, pricing risk and the losses when informed takers exploit mispriced quotes.",
+          "Built with AI-assisted development on React, TypeScript, WebSockets and Cloudflare Durable Objects for up to eight players, backed by 41 unit tests and multiplayer integration tests.",
         ],
       },
       {
@@ -207,6 +209,7 @@ export const resume: { section: string; entries: Entry[] }[] = [
         bullets: [
           "Ran trading for a $100M simulated long/short multi-asset fund at 30% leverage, growing the book to $141.1M (+8.5%) through Fed policy shifts and Middle East uncertainty, monitoring risk through VaR, standard deviation and cross-holding correlation.",
           "Pitched long Exxon and Chevron on Strait of Hormuz supply risk during US–Iran escalation, sizing on asymmetry with limited downside to baseline valuation.",
+          "Automated the transaction log, holdings tracker and daily NAV and returns journal across the full trading period.",
         ],
       },
       {
@@ -214,7 +217,8 @@ export const resume: { section: string; entries: Entry[] }[] = [
         title: "Federal Student Loans and Homeownership",
         role: "Research paper · Econometrics",
         bullets: [
-          "Analysed 300,000+ rows of federal loan disbursement data across 7,500+ institutions, standardising the dataset and building regressions that linked unsubsidised lending to lower homeownership rates and subsidised lending to higher.",
+          "Analysed 300,000+ rows of federal loan disbursement data across 7,500+ institutions, standardising the dataset to study lending concentration, seasonality and macroeconomic sensitivity.",
+          "Built a regression linking loan type to homeownership, finding subsidised lending associated with higher homeownership and unsubsidised lending with lower.",
         ],
       },
       {
@@ -222,7 +226,8 @@ export const resume: { section: string; entries: Entry[] }[] = [
         title: "ChainSight",
         role: "Co-founder · Colosseum Solana Hackathon",
         bullets: [
-          "Co-founded a verified Chrome extension that detects Solana and Ethereum token addresses on X and pulls live liquidity, volume, market cap and contract age from decentralised exchanges for instant due diligence.",
+          "Co-founded a verified Chrome extension that detects Solana and Ethereum token addresses on X for instant pre-trade due diligence.",
+          "Integrated live liquidity, volume, market cap and contract age from decentralised exchanges, surfacing rug-pull risk signals before capital is committed.",
         ],
       },
       {
@@ -231,7 +236,7 @@ export const resume: { section: string; entries: Entry[] }[] = [
         role: "Valuation",
         bullets: [
           "Chose EV/EBITDA after negative earnings ruled out P/E and negative free cash flow made a DCF unreliable; forecast five years of revenue and EBITDA to a $22.24 target price.",
-          "Assessed liquidity and capital intensity, identifying Intel Foundry as the swing factor while weighing geopolitical risk and US reliance on foreign chip manufacturing.",
+          "Identified Intel Foundry as the swing factor, weighing its Google and Nvidia partnerships against geopolitical risk and US reliance on foreign chip manufacturing.",
         ],
       },
     ],
@@ -239,6 +244,7 @@ export const resume: { section: string; entries: Entry[] }[] = [
   {
     section: "Certifications",
     entries: [
+      { when: "Jan 2026", title: "Sales & Trading Job Simulation", role: "Bank of America, via Forage" },
       { when: "Nov 2025", title: "M&A Simulation: Ranked 3rd", role: "UBS, via AmplifyMe" },
       { when: "Jun 2025", title: "Securities Industry Essentials", role: "FINRA" },
       { when: "Apr 2025", title: "Bloomberg Market Concepts", role: "Bloomberg" },
@@ -248,11 +254,13 @@ export const resume: { section: string; entries: Entry[] }[] = [
   {
     section: "Skills",
     entries: [
-      { when: "Finance", title: "Financial modelling, valuation, comparables, cash flow and capital structure analysis" },
-      { when: "Platforms", title: "Bloomberg Terminal, Capital IQ, Excel, PowerPoint" },
-      { when: "Data", title: "Python, SQL, Tableau, regression and statistical modelling" },
-      { when: "AI", title: "Claude Code, Codex, API integration" },
-      { when: "Languages", title: "Kyrgyz (native), Russian (fluent)" },
+      { when: "Finance", title: "Financial modelling, valuation, cash flow and sensitivity analysis, comparables, capital structure analysis" },
+      { when: "Quantitative", title: "Kelly Criterion, risk of ruin, VaR, probability, regression and statistical modelling" },
+      { when: "Platforms", title: "Bloomberg Terminal, Capital IQ, FactSet, Refinitiv, Excel (pivot tables, VBA), PowerPoint" },
+      { when: "Data", title: "Python, SQL, Tableau" },
+      { when: "AI", title: "Claude Code, Codex, API integration, Zapier, n8n, Make" },
+      { when: "Languages", title: "Kyrgyz (native), Russian (fluent), English (fluent)" },
+      { when: "Interests", title: "Chess, European football, crypto, video editing, Counter-Strike" },
     ],
   },
 ];
