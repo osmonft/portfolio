@@ -19,6 +19,12 @@ const PILLARS = [
   { k: 'AI', v: 'Automation that replaces manual workflows with tools people use daily.' },
 ];
 
+const METRICS = [
+  { k: 'LIVE PRODUCTS', v: String(PROJECTS.filter((p) => p.status === 'LIVE').length) },
+  { k: 'GRADUATING', v: 'Dec 2026' },
+  { k: 'BASED IN', v: 'NYC' },
+];
+
 export default function Home() {
   const ticker = [...TICKER, ...TICKER, ...TICKER, ...TICKER];
 
@@ -147,8 +153,16 @@ export default function Home() {
         </section>
 
         {/* DRIFT TYPE */}
-        <div className="drift-wrap" aria-hidden="true">
-          <div className="drift serif">finance · data · ai · finance · data · ai</div>
+        <div className="drift-wrap">
+          <div className="drift serif" aria-hidden="true">finance × ai</div>
+          <div className="wrap metrics">
+            {METRICS.map((m) => (
+              <div className="metric rv" key={m.k}>
+                <span className="metric-v">{m.v}</span>
+                <span className="mono metric-k">{m.k}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* CONTACT */}
