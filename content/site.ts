@@ -110,7 +110,7 @@ export const projects: Project[] = [
   },
   {
     slug: "coach-caton",
-    cover: { src: "/work/coach-caton-cover.png", width: 256, height: 256, alt: "Coach Caton", background: "#009fe4" },
+    cover: { src: "/work/coach-caton-cover.jpg", width: 900, height: 900, alt: "ACE Method Coaching logo", background: "#31a7c5" },
     title: "Coach Caton",
     kind: "AI assistant",
     href: "https://hurdlepro.lovable.app/ask-coach",
@@ -169,7 +169,7 @@ export const resume: { section: string; entries: Entry[] }[] = [
         title: "Murray Hill Group",
         role: "Investment Analyst · Private equity and venture capital",
         bullets: [
-          "Performed independent due diligence on a private nuclear-generation company — projected cash flows, cost structure and contract-backed revenue visibility — informing a decision to defer a $10M investment until technology and contract milestones de-risked the entry.",
+          "Performed independent due diligence on a private nuclear-generation company, analysing projected cash flows, cost structure and contract-backed revenue visibility, informing a decision to defer a $10M investment until technology and contract milestones de-risked the entry.",
           "Sized a ~$18B annual DoD diesel spend addressable by microreactor generation, mapping the US power regulatory environment, Project Pele, the customer pipeline and offtake contract structures to set the revenue ceiling.",
           "Wrote investment memos on the target and its closest competitor, benchmarking cost efficiency, capital intensity and technology readiness to stress-test the recommendation.",
           "Mapped approval milestones to first generation in a single regulatory timeline, giving senior leadership one page to judge how far the company stood from revenue.",
@@ -189,6 +189,17 @@ export const resume: { section: string; entries: Entry[] }[] = [
   {
     section: "Projects",
     entries: [
+      {
+        when: "Oct 2026",
+        title: "THEO",
+        role: "Creator · Multiplayer market-making game",
+        bullets: [
+          "Led AI-assisted development and Cloudflare deployment of a multiplayer trivia game simulating market-maker and market-taker behaviour.",
+          "Integrated real-time room-based gameplay using React, TypeScript, WebSockets and Cloudflare Durable Objects, supporting up to eight players.",
+          "Refined onboarding, room chat and game pacing through player feedback to improve clarity and usability.",
+          "Established automated validation with 41 unit tests and multiplayer integration tests covering scoring, reconnects, permissions and timer transitions.",
+        ],
+      },
       {
         when: "Mar – May 2026",
         title: "Portfolio Management",
@@ -228,10 +239,10 @@ export const resume: { section: string; entries: Entry[] }[] = [
   {
     section: "Certifications",
     entries: [
-      { when: "Nov 2025", title: "M&A Simulation — Ranked 3rd", role: "UBS, via AmplifyMe" },
+      { when: "Nov 2025", title: "M&A Simulation: Ranked 3rd", role: "UBS, via AmplifyMe" },
       { when: "Jun 2025", title: "Securities Industry Essentials", role: "FINRA" },
       { when: "Apr 2025", title: "Bloomberg Market Concepts", role: "Bloomberg" },
-      { when: "Oct 2024", title: "Sales & Trading Simulation — Ranked 1st", role: "Morgan Stanley and UBS, via AmplifyMe" },
+      { when: "Oct 2024", title: "Sales & Trading Simulation: Ranked 1st", role: "Morgan Stanley and UBS, via AmplifyMe" },
     ],
   },
   {

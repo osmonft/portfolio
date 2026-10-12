@@ -6,7 +6,7 @@ export const SITE_URL = "https://www.osmondjumagulov.com";
 
 // Next replaces a parent's openGraph instead of merging it, so each page sets the whole block.
 export function pageMeta(title: string, description: string, path: string, image?: { url: string; width: number; height: number; alt: string }): Metadata {
-  const full = `${title} — ${profile.name}`;
+  const full = `${title} | ${profile.name}`;
   return {
     title,
     description,

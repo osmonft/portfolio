@@ -11,8 +11,8 @@ const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
-  title: { default: profile.name, template: `%s — ${profile.name}` },
-  description: `${profile.name} — ${profile.practice}. Baruch College, ${profile.location}.`,
+  title: { default: profile.name, template: `%s | ${profile.name}` },
+  description: `${profile.name}. ${profile.practice}. Baruch College, ${profile.location}.`,
   openGraph: { title: profile.name, description: `${profile.practice}. Baruch College, ${profile.location}.`, url: "/", siteName: profile.name, type: "website" },
   twitter: { card: "summary", title: profile.name, description: `${profile.practice}. Baruch College, ${profile.location}.` },
   // Set PREVIEW_NOINDEX=1 only on a preview deployment, so it never competes with the real domain in search.
