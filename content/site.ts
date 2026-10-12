@@ -37,6 +37,8 @@ export type Project = {
   summary: string;
   facts: { label: string; value: string }[];
   plates: Plate[];
+  /** Optional image for the /work index, shown whole on a mount of its own edge colour. Defaults to the first plate. */
+  cover?: { src: string; width: number; height: number; alt: string; background: string };
 };
 
 const shot = (src: string, alt: string, size: Plate["size"] = "full", width = 1600, height = 1000): Plate => ({ src, alt, size, width, height });
@@ -86,6 +88,7 @@ export const projects: Project[] = [
   },
   {
     slug: "chainsight",
+    cover: { src: "/work/chainsight-cover.jpg", width: 1200, height: 1200, alt: "ChainSight logo", background: "#000005" },
     title: "ChainSight",
     kind: "Chrome extension",
     year: "2025",
@@ -107,6 +110,7 @@ export const projects: Project[] = [
   },
   {
     slug: "coach-caton",
+    cover: { src: "/work/coach-caton-cover.png", width: 256, height: 256, alt: "Coach Caton", background: "#009fe4" },
     title: "Coach Caton",
     kind: "AI assistant",
     href: "https://hurdlepro.lovable.app/ask-coach",

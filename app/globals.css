@@ -180,6 +180,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .work-card .plate { aspect-ratio: 16 / 11; padding: clamp(16px, 7%, 56px); }
 .work-card .plate .frame { height: auto; aspect-ratio: 16 / 10; }
+.work-card .plate .frame.contain img { object-fit: contain; object-position: center; }
 .card-label { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 14px; }
 .card-label .kind { color: var(--muted); }
 .also { margin-top: clamp(80px, 14vh, 140px); display: flex; justify-content: space-between; gap: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }

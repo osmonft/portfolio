@@ -19,12 +19,13 @@ export default function Work() {
 
         <div className="work-index grid">
           {projects.map((p, i) => {
-            const cover = p.plates[0];
+            const cover = p.cover ?? p.plates[0];
+            const mounted = p.cover ? { className: "frame contain", style: { background: p.cover.background } } : { className: "frame" };
             const enter = i < 2 ? { "data-intro": 2 + i * 0.5 } : { "data-rise": "" };
             return (
               <Link key={p.slug} href={`/work/${p.slug}`} className="work-card hover-parent" data-page>
                 <div className="plate" data-plate {...enter}>
-                  <div className="frame">
+                  <div {...mounted}>
                     <Image src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} sizes="(min-width: 900px) 46vw, 92vw" priority={i < 2} />
                   </div>
                 </div>
