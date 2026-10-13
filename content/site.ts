@@ -154,7 +154,7 @@ export const resume: { section: string; entries: Entry[] }[] = [
     section: "Experience",
     entries: [
       {
-        when: "Mar – Jul 2026",
+        when: "Mar to Jul 2026",
         title: "Edge Terminal",
         role: "Founder · Prediction-market analytics platform",
         bullets: [
@@ -164,7 +164,7 @@ export const resume: { section: string; entries: Entry[] }[] = [
         ],
       },
       {
-        when: "Jun – Aug 2025",
+        when: "Jun to Aug 2025",
         title: "Murray Hill Group",
         role: "Investment Analyst · Private equity and venture capital",
         bullets: [
@@ -176,7 +176,7 @@ export const resume: { section: string; entries: Entry[] }[] = [
         ],
       },
       {
-        when: "Jun 2024 – Now",
+        when: "Jun 2024 to Now",
         title: "ODP AI Solutions",
         role: "Founder",
         bullets: [
@@ -200,12 +200,12 @@ export const resume: { section: string; entries: Entry[] }[] = [
         ],
       },
       {
-        when: "Mar – May 2026",
+        when: "Mar to May 2026",
         title: "Portfolio Management",
         role: "Head of Trading · Long/short multi-asset fund",
         bullets: [
           "Ran trading for a $100M simulated long/short multi-asset fund at 30% leverage, growing the book to $141.1M (+8.5%) through Fed policy shifts and Middle East uncertainty, monitoring risk through VaR, standard deviation and cross-holding correlation.",
-          "Pitched long Exxon and Chevron on Strait of Hormuz supply risk during US–Iran escalation, sizing on asymmetry with limited downside to baseline valuation.",
+          "Pitched long Exxon and Chevron on Strait of Hormuz supply risk during US-Iran escalation, sizing on asymmetry with limited downside to baseline valuation.",
           "Automated the transaction log, holdings tracker and daily NAV and returns journal across the full trading period.",
         ],
       },

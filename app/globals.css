@@ -237,7 +237,7 @@ img { display: block; max-width: 100%; height: auto; }
 .cv-entry ul { margin-top: 12px; max-width: 62ch; }
 .cv-entry li { position: relative; padding-left: 18px; }
 .cv-entry li + li { margin-top: 8px; }
-.cv-entry li::before { content: "–"; position: absolute; left: 0; color: var(--muted); }
+.cv-entry li::before { content: ""; position: absolute; left: 2px; top: 0.72em; width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
 
 /* ── Grain: barely there, it takes the digital edge off ───────────────── */
 
