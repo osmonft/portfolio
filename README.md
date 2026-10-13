@@ -16,6 +16,5 @@ Open http://localhost:3000
 - `lib/seo.ts`: the site URL, canonical links and Open Graph
 - `public/work/`: project screenshots
 - `public/Osmonbek_Djumagulov_Resume.pdf`: replace this file to update the downloadable résumé
-- `public/connected-privacy.html`: ConnectED privacy policy, live at `/connected-privacy.html`
 
 Never set `PREVIEW_NOINDEX` on the production project. It hides the site from search engines.

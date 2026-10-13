@@ -9,7 +9,7 @@
 //   data-split       on either of the above: split into lines that rise from a mask
 //   data-rule        a hairline that draws from the left
 //   data-sep         a short vertical divider that grows from its centre
-//   data-plate       an image mount that wipes open from the bottom; its <img> settles from 1.08
+//   data-plate       an image mount that fades in place; its <img> develops and settles from 1.025
 //   data-page        on an internal <a>/<Link>: the page softens and lifts away before navigating
 
 import { useEffect, useRef } from "react";
@@ -37,10 +37,15 @@ function entrance(el: HTMLElement) {
     return gsap.from(el, { scaleY: 0, duration: 1.1, ease: "expo.inOut", paused: true });
   }
   if (el.hasAttribute("data-plate")) {
+    // No wipe, no travel: the mount is already where it belongs. The picture
+    // develops on it, a slow exposure with the faintest settle into focus.
     const img = el.querySelector("img");
     const tl = gsap.timeline({ paused: true });
-    tl.to(el, { clipPath: "inset(0% 0 0 0)", duration: 1.6, ease: EASE }, 0);
-    if (img) tl.fromTo(img, { scale: 1.08 }, { scale: 1, duration: 2.2, ease: EASE, transformOrigin: "50% 80%" }, 0);
+    tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power1.out" }, 0);
+    if (img) {
+      tl.fromTo(img, { opacity: 0 }, { opacity: 1, duration: 1.6, ease: "power2.inOut" }, 0.2);
+      tl.fromTo(img, { scale: 1.025 }, { scale: 1, duration: 2.4, ease: "power3.out", transformOrigin: "50% 50%", clearProps: "transform" }, 0.2);
+    }
     return tl;
   }
   // Default: whatever sits inside a .mask rises from behind it; otherwise a soft lift.
@@ -120,7 +125,6 @@ export function Motion() {
       ctx.add(() => {
         if (reduced) {
           gsap.set("[data-intro],[data-rise]", { visibility: "visible" });
-          gsap.set("[data-plate]", { clipPath: "none" });
           gsap.set(document.body, { opacity: 1, clearProps: "filter,transform" });
           return;
         }

@@ -183,7 +183,6 @@ img { display: block; max-width: 100%; height: auto; }
 .work-card .plate .frame.contain img { object-fit: contain; object-position: center; }
 .card-label { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 14px; }
 .card-label .kind { color: var(--muted); }
-.also { margin-top: clamp(80px, 14vh, 140px); display: flex; justify-content: space-between; gap: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
 
 /* ── Project: a wall label beside the work ────────────────────────────── */
 
@@ -263,7 +262,6 @@ img { display: block; max-width: 100%; height: auto; }
 /* ── Motion states (only when JS runs; content is visible without it) ── */
 
 html.js [data-intro], html.js [data-rise] { visibility: hidden; }
-html.js [data-plate] { clip-path: inset(100% 0 0 0); }
 html.js body { opacity: 0; }
 
 html.lenis, html.lenis body { height: auto; }
@@ -273,7 +271,6 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .grain { animation: none; }
   html.js [data-intro], html.js [data-rise] { visibility: visible; }
-  html.js [data-plate] { clip-path: none; }
   html.js body { opacity: 1; }
 }
 

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { inDevelopment, projects } from "@/content/site";
+import { projects } from "@/content/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta("Work", "Projects by Osmon Djumagulov: Edge Terminal, THEO, ChainSight and Coach Caton.", "/work");
@@ -36,11 +36,6 @@ export default function Work() {
               </Link>
             );
           })}
-        </div>
-
-        <div className="also label" data-rise>
-          <span className="mask"><span>{inDevelopment.title}</span></span>
-          <span className="mask"><span className="muted">{inDevelopment.kind}</span></span>
         </div>
       </main>
       <Footer />

@@ -90,12 +90,12 @@ export const projects: Project[] = [
     slug: "chainsight",
     cover: { src: "/work/chainsight-cover.jpg", width: 1200, height: 1200, alt: "ChainSight logo", background: "#000005" },
     title: "ChainSight",
-    kind: "Chrome extension",
+    kind: "On-chain due diligence",
     year: "2025",
     href: "https://chromewebstore.google.com/detail/tweet-ca-helper-chainsigh/eadccpcdekfcoalobnmkgmblfomlimim",
-    linkLabel: "Chrome Web Store",
+    linkLabel: "Get ChainSight",
     summary:
-      "A verified Chrome extension that spots Solana and Ethereum token addresses on X and pulls live liquidity, volume, market cap and contract age from decentralised exchanges, so due diligence happens in the feed instead of five tabs later.",
+      "A verified tool that spots Solana and Ethereum token addresses on X and pulls live liquidity, volume, market cap and contract age from decentralised exchanges, so due diligence happens in the feed instead of five tabs later.",
     facts: [
       { label: "Role", value: "Co-founder" },
       { label: "Built at", value: "Colosseum Solana Hackathon" },
@@ -130,8 +130,6 @@ export const projects: Project[] = [
     ],
   },
 ];
-
-export const inDevelopment = { title: "ConnectED", kind: "Chrome extension · In development" };
 
 // ── Résumé ──────────────────────────────────────────────────────────────
 
@@ -184,7 +182,6 @@ export const resume: { section: string; entries: Entry[] }[] = [
         bullets: [
           "Launched an AI chatbot for a sports-coaching business, cutting the owner’s email volume from 70 to 15 a month and capturing 100+ leads into a central database.",
           "Engineered a knowledge base drawn from the business’s social platforms so the chatbot answers client and prospect questions with no staff involvement.",
-          "Built a Chrome extension for LinkedIn networking that surfaces commonalities between users and drafts tailored outreach with the Anthropic API.",
         ],
       },
     ],
@@ -226,7 +223,7 @@ export const resume: { section: string; entries: Entry[] }[] = [
         title: "ChainSight",
         role: "Co-founder · Colosseum Solana Hackathon",
         bullets: [
-          "Co-founded a verified Chrome extension that detects Solana and Ethereum token addresses on X for instant pre-trade due diligence.",
+          "Co-founded a verified due-diligence tool that detects Solana and Ethereum token addresses on X for instant pre-trade due diligence.",
           "Integrated live liquidity, volume, market cap and contract age from decentralised exchanges, surfacing rug-pull risk signals before capital is committed.",
         ],
       },
