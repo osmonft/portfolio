@@ -9,6 +9,7 @@
 //   data-split       on either of the above: split into lines that rise from a mask
 //   data-rule        a hairline that draws from the left
 //   data-sep         a short vertical divider that grows from its centre
+//   data-draw        an <svg> whose line draws itself once, then holds still
 //   data-plate       an image mount that fades in place; its <img> develops and settles from 1.025
 //   data-page        on an internal <a>/<Link>: the page softens and lifts away before navigating
 
@@ -35,6 +36,16 @@ function entrance(el: HTMLElement) {
   }
   if (el.hasAttribute("data-sep")) {
     return gsap.from(el, { scaleY: 0, duration: 1.1, ease: "expo.inOut", paused: true });
+  }
+  if (el.hasAttribute("data-draw")) {
+    const line = el.querySelector<SVGGeometryElement>("polyline, path");
+    if (!line) return gsap.timeline({ paused: true });
+    const len = line.getTotalLength();
+    return gsap.fromTo(
+      line,
+      { strokeDasharray: len, strokeDashoffset: len },
+      { strokeDashoffset: 0, duration: 2.5, ease: "power2.out", paused: true, clearProps: "strokeDasharray,strokeDashoffset" },
+    );
   }
   if (el.hasAttribute("data-plate")) {
     // No wipe, no travel: the mount is already where it belongs. The picture

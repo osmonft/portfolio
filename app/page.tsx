@@ -1,12 +1,14 @@
 import { Fragment } from "react";
 import Link from "next/link";
+import { MarketLine } from "@/components/MarketLine";
 import { profile, routes } from "@/content/site";
 
 // The landing page is three words, small and centred: Work, Résumé, Contact.
-// Hovering one dims the others; nothing else.
+// Hovering one dims the others. Behind them, one faint rising line.
 export default function Landing() {
   return (
     <main className="landing">
+      <MarketLine />
       <div className="landing-corner top label">
         <span className="mask" data-intro="3"><span>{profile.name}</span></span>
       </div>
